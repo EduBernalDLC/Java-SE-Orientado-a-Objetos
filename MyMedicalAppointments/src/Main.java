@@ -5,6 +5,10 @@ public class Main {
         myDoctor.name= "Alejandro López";
         myDoctor.showName();
 
+        /*
+        Doctor myDoctor= new Doctor(name: "Anahí Salgado");
+        Segunda opción para construir el objeto
+        */
 
 
 
