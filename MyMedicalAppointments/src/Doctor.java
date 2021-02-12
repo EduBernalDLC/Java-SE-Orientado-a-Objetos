@@ -1,5 +1,5 @@
 public class Doctor {
-    int id;
+    static int id= 0;
     String name;
     String speciality;
 
@@ -9,6 +9,7 @@ public class Doctor {
      */
     Doctor(){
         System.out.println("Contruyendo el objeto Doctor");
+        id++;
     }//Fin visualización método constructor Doctor
 
     /**
@@ -26,6 +27,12 @@ public class Doctor {
     public void showName(){
         System.out.println(name);
     }//Fin método para imprimir el nombre del doctor
+
+    //-----------------------------Otra clase------------------------------------------
+
+    public void showId(){
+        System.out.println("ID Doctor: " + id);
+    }//Fin método para imprimir el ID
 
 
 
