@@ -28,6 +28,11 @@ public class Main {
         Segunda opción para construir el objeto
         */
 
+        //-----------------Sobrecarga de métodos y constructores-------------------------------------------
+        //Doctor myDoctor= new Doctor();//Se puede hacer así
+        Doctor myDoctor= new Doctor("Anahí Salgado", "Pediatría");
+        System.out.println(myDoctor.name);
+        System.out.println(myDoctor.speciality);
     }//Fin main
 
 }//Fin clase

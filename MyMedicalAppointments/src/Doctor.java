@@ -9,15 +9,18 @@ public class Doctor {
      */
     Doctor(){
         System.out.println("Contruyendo el objeto Doctor");
-        id++;
     }//Fin visualización método constructor Doctor
 
     /**
      * Esto es para tener otra forma de construir el objeto, esta comentado en main
      * @param name
      */
-    Doctor(String name){
+    Doctor(String name, String speciality){
+        id++;
         System.out.println("El nombre del doctor asignado es: " + name);
+
+        this.name= name;
+        this.speciality= speciality;
     }//Fin segunda visualización método constructor Doctor
 
     //Comportamientos
