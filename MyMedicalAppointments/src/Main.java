@@ -21,7 +21,7 @@ public class Main {
         myDoctor.showId();
         */
 
-        showMenu();
+        //showMenu();
 
         /*
         Doctor myDoctor= new Doctor(name: "Anahí Salgado");
@@ -33,6 +33,14 @@ public class Main {
         Doctor myDoctor= new Doctor("Anahí Salgado", "Pediatría");
         System.out.println(myDoctor.name);
         System.out.println(myDoctor.speciality);
+
+        //--------------Encapsulamiento: Modificadores de acceso---------------------------------------------
+        Patient patient= new Patient("Alejandra", "alejandra@mail.com");
+
+
+
+
+
     }//Fin main
 
 }//Fin clase
