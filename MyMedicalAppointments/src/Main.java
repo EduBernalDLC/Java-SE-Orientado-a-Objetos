@@ -36,11 +36,12 @@ public class Main {
 
         //--------------Encapsulamiento: Modificadores de acceso---------------------------------------------
         Patient patient= new Patient("Alejandra", "alejandra@mail.com");
+        patient.setWeight(54.6);
+        System.out.println(patient.getWeight());
 
-
-
-
-
+        patient.setPhoneNumber("12345678");
+        System.out.println(patient.getPhoneNumber());
+        
     }//Fin main
 
 }//Fin clase
