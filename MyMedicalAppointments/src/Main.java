@@ -1,3 +1,5 @@
+import java.util.Date;
+
 import static ui.UIMenu.*;
 
 public class Main {
@@ -31,8 +33,7 @@ public class Main {
         //-----------------Sobrecarga de métodos y constructores-------------------------------------------
         //Doctor myDoctor= new Doctor();//Se puede hacer así
         Doctor myDoctor= new Doctor("Anahí Salgado", "Pediatría");
-        System.out.println(myDoctor.name);
-        System.out.println(myDoctor.speciality);
+
 
         //--------------Encapsulamiento: Modificadores de acceso---------------------------------------------
         Patient patient= new Patient("Alejandra", "alejandra@mail.com");
@@ -41,7 +42,16 @@ public class Main {
 
         patient.setPhoneNumber("12345678");
         System.out.println(patient.getPhoneNumber());
-        
+
+        //----Añadimos cita a un doctor, con las clases anidadas-----------------------------------
+        myDoctor.addAvailableAppointment(new Date(), "4pm");
+        myDoctor.addAvailableAppointment(new Date(), "10am");
+        myDoctor.addAvailableAppointment(new Date(), "1pm");
+
+        for (Doctor.AvailableAppointment availableAppointment : myDoctor.availableAppointments){
+            System.out.println(availableAppointment + " " + availableAppointment.getTime());
+        }//Imprimimos las citas
+
     }//Fin main
 
 }//Fin clase
