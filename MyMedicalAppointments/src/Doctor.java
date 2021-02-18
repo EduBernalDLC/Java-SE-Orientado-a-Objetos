@@ -1,44 +1,29 @@
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Doctor {
-    static int id= 0;
-    private String name;
+public class Doctor extends User{
     private String speciality;
 
     /**
-     * Aquí estamos visualizando el método constructor
-     * Simepre se ejecutará al llamar este método
-     */
-    Doctor(){
-        System.out.println("Contruyendo el objeto Doctor");
-    }//Fin visualización método constructor Doctor
-
-    /**
-     * Esto es para tener otra forma de construir el objeto, esta comentado en main
+     * Esto es para tener otra forma de construir el objeto, esta comentado en otras clases
      * @param name
      */
-    Doctor(String name, String speciality){
-        id++;
+    Doctor(String name, String email){
+        super(name, email);
         System.out.println("El nombre del doctor asignado es: " + name);
 
-        this.name= name;
         this.speciality= speciality;
-    }//Fin segunda visualización método constructor Doctor
+    }//Fin visualización método constructor Doctor
 
-    //Comportamientos
-    /**
-     * Método para imprimir el nombre del doctor
-     */
-    public void showName(){
-        System.out.println(name);
-    }//Fin método para imprimir el nombre del doctor
+    //Getters y Setters de Speciality
+    public String getSpeciality() {
+        return speciality;
+    }
 
-    //-----------------------------Otra clase------------------------------------------
+    public void setSpeciality(String speciality) {
+        this.speciality = speciality;
+    }
 
-    public void showId(){
-        System.out.println("ID Doctor: " + id);
-    }//Fin método para imprimir el ID
 
     //------------------CLASES ANIDADAS------------------------------------------------------
 
