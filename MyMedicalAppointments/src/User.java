@@ -6,7 +6,7 @@ public class User {
     private String phoneNumber;
 
     public User(String name, String email){
-        
+
     }//Constructor con valores mínimos para que un usuario exista
 
     public int getId() {
@@ -53,4 +53,8 @@ public class User {
         }//Fin else if
     }
 
+    @Override
+    public String toString(){
+        return "User: " + name + ", Email: " + email + "\nAdreess: " + address + ". Phone: " + phoneNumber;
+    }
 }//Fin clase
