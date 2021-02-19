@@ -36,6 +36,12 @@ public class Doctor extends User{
         return availableAppointments;
     }//Solo devuelve el array que acabamos de hacer
 
+    //Otra Sobreescritura de toString
+    @Override
+    public String toString() {
+        return super.toString() + "\nSpeciality: " + speciality + "\nAvailable" + availableAppointments.toString();
+    }//Final de sobreescritura toString
+
     public static class AvailableAppointment{
         private int id;
         private Date date;
@@ -70,6 +76,11 @@ public class Doctor extends User{
             this.time = time;
         }
 
+        //Sobreescritura de toString
+        @Override
+        public String toString() {
+            return "Available Appointments \nDate: " + date + "\nTime: " + time;
+        }//Fin sobreescritura
     }//Fin clase anidada
 
 }//Fin clase
