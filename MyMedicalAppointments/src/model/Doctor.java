@@ -1,19 +1,21 @@
+package model;
+
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Doctor extends User{
+public class Doctor extends User {
     private String speciality;
 
     /**
      * Esto es para tener otra forma de construir el objeto, esta comentado en otras clases
      * @param name
      */
-    Doctor(String name, String email){
+    public Doctor(String name, String email){
         super(name, email);
         System.out.println("El nombre del doctor asignado es: " + name);
 
         this.speciality= speciality;
-    }//Fin visualización método constructor Doctor
+    }//Fin visualización método constructor model.Doctor
 
     //Getters y Setters de Speciality
     public String getSpeciality() {
