@@ -40,7 +40,7 @@ public class Main {
 
             }//Fin comportamiento de clase anónima
         };//Fin clase anónima
-        
+
         /*
         for (model.Doctor.AvailableAppointment availableAppointment : myDoctor.availableAppointments){
             System.out.println(availableAppointment + " " + availableAppointment.getTime());
