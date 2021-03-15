@@ -34,7 +34,6 @@ public class UIMenu{
                 case 2:
                     response = 0;
                     authUser(2);
-
                     break;
                 case 0:
                     System.out.println("Thank you for you visit");
@@ -100,6 +99,8 @@ public class UIMenu{
                         //Obtenemos el usuario logeado
                         doctorLogged= d;
                         //Mostramos el menú del doctor
+
+                        UIDoctorMenu.showDoctorMenu();
                     }//fin if
                 }//Fin for
             }//Fin if usuarios1
