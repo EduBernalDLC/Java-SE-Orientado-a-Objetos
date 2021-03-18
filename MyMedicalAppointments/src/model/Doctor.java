@@ -28,7 +28,7 @@ public class Doctor extends User {
 
     //------------------CLASES ANIDADAS------------------------------------------------------
 
-    ArrayList<AvailableAppointment> availableAppointments= new ArrayList<>();//Primer encuentro con colecciones
+    private ArrayList<AvailableAppointment> availableAppointments= new ArrayList<>();//Primer encuentro con colecciones
     public void addAvailableAppointment(String date, String time){
         availableAppointments.add(new AvailableAppointment(date, time));//Acumula la cita en la colección
     }//Método para añadir citas
@@ -73,11 +73,11 @@ public class Doctor extends User {
             this.id = id;
         }
 
-        public Date getDate() {
+        public Date getDate(String DATE) {
             return date;
         }
 
-        public String getDate(String DATE){
+        public String getDate(){
             return format.format(date);
         }
 
