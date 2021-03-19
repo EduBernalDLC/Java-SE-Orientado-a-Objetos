@@ -112,6 +112,7 @@ public class UIMenu{
                         //Obtenemos el usuario logeado
                         patientLogged= p;
                         //Mostramos el menú del paciente
+                        UIPatientMenu.showPatientMenu();
                     }//fin if
                 }//Fin for
             }//Fin if usuarios2
