@@ -2,6 +2,7 @@ package ui;
 
 import model.Doctor;
 
+import java.rmi.server.UID;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Scanner;
@@ -34,10 +35,9 @@ public class UIPatientMenu{
                     UIMenu.showMenu();
                     break;
                 default:
-                    System.out.println();
+                    System.out.println("Parece que te has perdido, yo también");
                     break;
             }//Fin switch
-
         }while(response != 0);
 
     }//Fin showPatientMenu
@@ -64,6 +64,7 @@ public class UIPatientMenu{
                 ArrayList<Doctor.AvailableAppointment> availableAppointments= UIDoctorMenu.doctorsAvailableAppointments.get(i).getAvailableAppointments();
 
                 Map<Integer, Doctor> doctorAppointments= new TreeMap<>();
+
                 for(int j= 0; j < availableAppointments.size(); j++){
                     k++;
                     System.out.println(k + ". " + availableAppointments.get(j).getDate());
@@ -101,9 +102,7 @@ public class UIPatientMenu{
 
                 showPatientMenu();
             }//Fin if
-
         }while(response != 0);
-
     }//Fin showBookAppointmentMenu
 
     private static void showPatientMyAppointments(){

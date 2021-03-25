@@ -18,7 +18,7 @@ public class UIDoctorMenu {
             System.out.println("Welcome " + UIMenu.doctorLogged.getName());
             System.out.println("1. Add available appointment");
             System.out.println("2. My scheduled appointments");
-            System.out.println("3. Logout");
+            System.out.println("0. Logout");
 
             Scanner sc= new Scanner(System.in);
             response= Integer.valueOf(sc.nextLine());
@@ -29,10 +29,11 @@ public class UIDoctorMenu {
                     break;
                 case 2:
                     break;
-                case 3:
+                case 0:
                     UIMenu.showMenu();
                     break;
                 default:
+                    System.out.println("Error fatal :(");
                     break;
 
             }//Fin switch
@@ -77,7 +78,6 @@ public class UIDoctorMenu {
                     time= sc.nextLine();
                     System.out.println("Your time is: " + time + "\n1. Correct \n2. Change time");
                     responseTime= Integer.valueOf(sc.nextLine());
-
                 }while(responseTime == 2);
 
                 UIMenu.doctorLogged.addAvailableAppointment(date, time);
@@ -96,7 +96,6 @@ public class UIDoctorMenu {
 
             doctorsAvailableAppointments.add(doctor);
         }//Fin if
-
 
     }//Fin método checkDoctorAvailableAppointments
 
