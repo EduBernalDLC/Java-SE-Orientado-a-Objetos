@@ -19,7 +19,7 @@ public class Patient extends User{
     public void addAppointmentDoctors(Doctor doctor, Date date, String time){
         AppointmentDoctor appointmentDoctor= new AppointmentDoctor(this, doctor);
         appointmentDoctor.schedule(date, time);
-        appointmentDoctor.add(appointmentDoctor);
+        appointmentDoctors.add(appointmentDoctor);
     }
 
     public ArrayList<AppointmentNurse> getAppointmentNurses() {

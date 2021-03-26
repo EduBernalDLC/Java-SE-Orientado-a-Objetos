@@ -8,7 +8,8 @@ public abstract class User {
     private String phoneNumber;
 
     public User(String name, String email){
-
+        this.name= name;
+        this.email= email;
     }//Constructor con valores mínimos para que un usuario exista
 
     public int getId() {
@@ -24,7 +25,7 @@ public abstract class User {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name= name;
     }
 
     public String getEmail() {
@@ -32,7 +33,7 @@ public abstract class User {
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.email= email;
     }
 
     public String getAddress() {
@@ -40,7 +41,7 @@ public abstract class User {
     }
 
     public void setAddress(String address) {
-        this.address = address;
+        this.address= address;
     }
 
     public String getPhoneNumber() {
@@ -48,9 +49,9 @@ public abstract class User {
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        if(phoneNumber.length() != 8){
+        if(phoneNumber.length() > 8){
             System.out.println("Debes asignar 8 dígitos");
-        }else{
+        }else if(phoneNumber.length() == 8){
             this.phoneNumber = phoneNumber;
         }//Fin else if
     }

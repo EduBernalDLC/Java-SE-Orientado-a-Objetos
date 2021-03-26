@@ -6,7 +6,4 @@ public interface ISchedulable {
 
     void schedule(Date date, String time);
 
-
-
-
 }//Fin interface

@@ -7,11 +7,8 @@ import java.util.Date;
 
 public class Doctor extends User {
     private String speciality;
+    private ArrayList<AvailableAppointment> availableAppointments= new ArrayList<>();//Primer encuentro con colecciones
 
-    /**
-     * Esto es para tener otra forma de construir el objeto, esta comentado en otras clases
-     * @param name
-     */
     public Doctor(String name, String email){
         super(name, email);
     }//Fin visualización método constructor model.Doctor
@@ -26,9 +23,6 @@ public class Doctor extends User {
     }
 
 
-    //------------------CLASES ANIDADAS------------------------------------------------------
-
-    private ArrayList<AvailableAppointment> availableAppointments= new ArrayList<>();//Primer encuentro con colecciones
     public void addAvailableAppointment(String date, String time){
         availableAppointments.add(new AvailableAppointment(date, time));//Acumula la cita en la colección
     }//Método para añadir citas
@@ -58,10 +52,9 @@ public class Doctor extends User {
         public AvailableAppointment(String date, String time){//Esto es un constructor
             try {
                 this.date= format.parse(date);
-            } catch (ParseException e) {
+            }catch (ParseException e) {
                 e.printStackTrace();
             }
-
             this.time= time;
         }//Fin constructor
 
@@ -70,7 +63,7 @@ public class Doctor extends User {
         }
 
         public void setId(int id) {
-            this.id = id;
+            this.id= id;
         }
 
         public Date getDate(String DATE) {
@@ -82,7 +75,7 @@ public class Doctor extends User {
         }
 
         public void setDate(Date date) {
-            this.date = date;
+            this.date= date;
         }
 
         public String getTime() {
@@ -90,7 +83,7 @@ public class Doctor extends User {
         }
 
         public void setTime(String time) {
-            this.time = time;
+            this.time= time;
         }
 
         //Sobreescritura de toString

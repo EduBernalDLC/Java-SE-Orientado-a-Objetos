@@ -10,8 +10,8 @@ public class AppointmentDoctor implements ISchedulable{
     private String time;
 
     public AppointmentDoctor(Patient patient, Doctor doctor) {
-        this.patient = patient;
-        this.doctor = doctor;
+        this.patient= patient;
+        this.doctor= doctor;
     }//Fin constructor
 
     public int getId() {
@@ -19,7 +19,7 @@ public class AppointmentDoctor implements ISchedulable{
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.id= id;
     }
 
     public Patient getPatient() {
@@ -35,7 +35,7 @@ public class AppointmentDoctor implements ISchedulable{
     }
 
     public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
+        this.doctor= doctor;
     }
 
     public Date getDate() {
@@ -43,7 +43,7 @@ public class AppointmentDoctor implements ISchedulable{
     }
 
     public void setDate(Date date) {
-        this.date = date;
+        this.date= date;
     }
 
     public String getTime() {
@@ -51,7 +51,7 @@ public class AppointmentDoctor implements ISchedulable{
     }
 
     public void setTime(String time) {
-        this.time = time;
+        this.time= time;
     }
 
     //Viene de la interface
@@ -61,6 +61,4 @@ public class AppointmentDoctor implements ISchedulable{
         this.time= time;
     }
 
-    public void add(AppointmentDoctor appointmentDoctor) {
-    }
 }//Fin clase

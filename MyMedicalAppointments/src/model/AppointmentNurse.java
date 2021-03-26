@@ -23,7 +23,7 @@ public class AppointmentNurse implements ISchedulable{
     }
 
     public void setPatient(Patient patient) {
-        this.patient = patient;
+        this.patient= patient;
     }
 
     public Nurse getNurse() {
@@ -31,7 +31,7 @@ public class AppointmentNurse implements ISchedulable{
     }
 
     public void setNurse(Nurse nurse) {
-        this.nurse = nurse;
+        this.nurse= nurse;
     }
 
     public Date getDate() {
@@ -47,12 +47,12 @@ public class AppointmentNurse implements ISchedulable{
     }
 
     public void setTime(String time) {
-        this.time = time;
+        this.time= time;
     }
 
     //Viene de la interface
     @Override
     public void schedule(Date date, String time) {
-
     }
+
 }//Fin clase
