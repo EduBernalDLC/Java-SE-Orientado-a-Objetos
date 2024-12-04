@@ -1,0 +1,37 @@
+name: Build
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [opened, synchronize, reopened]
+jobs:
+  sonarcloud:
+    name: SonarQube Cloud
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: SonarQube Cloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+            - name: Fetch SonarQube Quality Gate
+        run: |
+          # Descarga el estado del Quality Gate de SonarCloud
+          curl -u "${{ secrets.SONAR_TOKEN }}:" "https://sonarcloud.io/api/qualitygates/project_status?projectKey=<PROJECT_KEY>" -o quality_gate.json
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+      - name: Check Quality Gate Status
+        run: |
+          # Verifica si hay vulnerabilidades críticas o altas
+          if jq -e '.projectStatus.conditions[] | select(.metricKey == "vulnerabilities") | select(.status == "ERROR")' quality_gate.json > /dev/null; then
+            echo "High or critical vulnerabilities found. Commit aborted.";
+            exit 1;
+          fi
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
