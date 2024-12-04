@@ -13,23 +13,25 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-
-      - name: Set up JDK
-        uses: actions/setup-java@v3
-        with:
-          java-version: '17' # Cambia según la versión de tu proyecto
-          distribution: 'temurin'
-
-      - name: Build project
-        run: |
-          ./gradlew build  # Si usas Gradle
-          # mvn clean install  # Si usas Maven
-
+          
       - name: Run SonarQube Cloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          args: >
-            -Dsonar.java.binaries=build/classes/java/main
+          
+      - name: Fetch SonarQube Quality Gate
+        run: |
+          curl -u "${{ secrets.SONAR_TOKEN }}:" "https://sonarcloud.io/api/qualitygates/project_status?projectKey=<PROJECT_KEY>" -o quality_gate.json
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          
+      - name: Check Quality Gate Status
+        run: |
+          if jq -e '.projectStatus.conditions[] | select(.metricKey == "vulnerabilities") | select(.status == "ERROR")' quality_gate.json > /dev/null; then
+            echo "High or critical vulnerabilities found. Commit aborted.";
+            exit 1;
+          fi
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
