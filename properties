@@ -3,6 +3,8 @@
 
 #sonar.exclusions=**/*.java
 
+#dssdds
+
 # This is the name and version displayed in the SonarCloud UI.
 #sonar.projectName=Java-SE-Orientado-a-Objetos
 #sonar.projectVersion=1.0
