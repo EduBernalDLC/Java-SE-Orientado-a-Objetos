@@ -1,37 +1,39 @@
 name: Build
+
 on:
   push:
     branches:
       - master
-  pull_request:
-    types: [opened, synchronize, reopened]
+
+
 jobs:
-  sonarcloud:
-    name: SonarQube Cloud
+  build:
+    name: Build and analyze
     runs-on: ubuntu-latest
+    
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-          
-      - name: Run SonarQube Cloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: 17
+          distribution: 'zulu' # Alternative distribution options are available.
+      - name: Cache SonarQube packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+      - name: Cache Maven packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+      - name: Build and analyze
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          
-      - name: Fetch SonarQube Quality Gate
-        run: |
-          curl -u "${{ secrets.SONAR_TOKEN }}:" "https://sonarcloud.io/api/qualitygates/project_status?projectKey=<PROJECT_KEY>" -o quality_gate.json
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          
-      - name: Check Quality Gate Status
-        run: |
-          if jq -e '.projectStatus.conditions[] | select(.metricKey == "vulnerabilities") | select(.status == "ERROR")' quality_gate.json > /dev/null; then
-            echo "High or critical vulnerabilities found. Commit aborted.";
-            exit 1;
-          fi
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=EduBernalDLC_Java-SE-Orientado-a-Objetos_7ce24cdb-bfad-4108-961a-98c305da61ac -Dsonar.projectName='Java-SE-Orientado-a-Objetos'
